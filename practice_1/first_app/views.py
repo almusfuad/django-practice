@@ -3,5 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 
 
-def home(request):
-      return render(request, 'home.html')
+def geeksfor(request):
+      return render(request, 'geeksfor.html')
+
+def earthly(request):
+      return render(request, 'earthly.html')

@@ -3,5 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.home),
+    path('geeksfor/', views.geeksfor),
+    path('earthly/', views.earthly),
 ]
