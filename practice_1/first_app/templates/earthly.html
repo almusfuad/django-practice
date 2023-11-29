@@ -7,5 +7,94 @@
 </head>
 <body>
       <h1>practice from earthly</h1>
+
+      <h2>The data that stores in our back side--</h2>
+      <h4>Name: {{name}}</h4>
+      <h4>Age: {{age}}</h4>
+      <h4>List of numbers: {{numbers}}</h4>
+      <h4>A list of string: {{list}}</h4>
+      <h4>Quato: {{quato}}</h4>
+      <h4>A dict(2) of courses</h4>
+      <h4>A complete sentence: {{sentence}}</h4>
+      <h4>A date: {{date}}</h4>
+      <h4>An empty object</h4>
+      <br>
+      <h2>Practice from earthly.dev is started from here.</h2>
+
+      <!-- join -->
+      <h5>Join: We using join to create a sentence from a list given by string. Example: {{list | join:"-"}}</h5>
+
+      <!-- date filter -->
+      <h5>Date: This filter is used to format a date according to a given format. Example: {{date | date:"D d M Y"}}. Another example can be {{date | date:"SHORT_DATE_FORMAT"}}. If there is no date filter, {{date | date}}</h5>
+
+      <!-- default filter -->
+      <h5>Default: This filter is used to set a default value to a variable. If the variable evaluates to False, it will use the default argument. For empty string, {{empty | default:"nothing to show"}}</h5>
+
+      <!-- add filter -->
+      <h5>Add: This filter is used to add the argument to the value. It is used for numeric data. For example: we can increase the age by two, {{age | add:"2"}}</h5>
+
+      <!-- capfirst filter -->
+      <h5>Capfirst: It is used in valid letter to capitalize the first character of the value. The earthly's first letter can be turn into capitalize, {{'earthly' | capfirst}}</h5>
+
+      <!-- cut filter -->
+      <h5>Cut: This filter is used to minimize some portion based on condition. We can use it on the sentence, {{sentence | cut:" "}}</h5>
+
+      <!-- dictsort filter -->
+      <h5>Dictsort: This filter is used to sort a dictionary. We can use it on the dict(2) of courses based on fees, {{courses | dictsort:"fees"}}. Also we can make it in reverse, {{courses | dictsortreversed:"fees"}}</h5>
+
+      <!-- escape filter -->
+      <h5>This filter is used to escape string's HTML. For example, </h5>
+
+      <!-- first -->
+      <h5>First: This filter is used to get the first element of a list. For example first number from numbers list, {{numbers | first}}</h5>
+
+      <!-- last -->
+      <h5>Last: This filter is used to get the last element of a list. For example last number from numbers list, {{numbers | last}}</h5>
+
+      <!-- length -->
+      <h5>Length: This filter is used to get the length of a list. For example length of the name, {{name | length}}</h5>
+
+      <!-- line numbers -->
+      <h5>Line numbers: This filter is used to add line numbers to a string. For example of the sentence, {{sentence | linenumbers}}</h5>
+
+      <!-- lower -->
+      <h5>Lower: This filter is used to convert a string to lowercase. For example of name, {{name | lower}}</h5>
+
+      <!-- upper -->
+      <h5>Upper: This filter is used to convert a string to uppercase. For example name, {{name | upper}}</h5>
+
+      <!-- title -->
+      <h5>Title: This filter is used to convert a string to title case. For example name, {{name | title}}</h5>
+
+      <!-- random -->
+      <h5>Random: This filter is used to get a random element from a list. For example numbers, {{numbers | random}}</h5>
+
+      <!-- slice -->
+      <h5>Slice: This filter is used to get a slice of a list. For example numbers, {{numbers | slice:"1:3"}}</h5>
+
+      <!-- time filter -->
+      <h5>Time: This filter is used to format a time according to a given format. For example date, {{date | time:"H:i"}}</h5>
+
+      <!-- timesince -->
+      <h5>Timesince: This filter is used to get the time since a given date. For example date, {{date | timesince}}</h5>
+
+      <!-- truncatechars -->
+      <h5>Truncatechars: This filter is used to truncate a string after a given number of characters. For example sentence, {{sentence | truncatechars:"10"}}</h5>
+
+      <!-- wordcount -->
+      <h5>Wordcount: This filter is used to count the number of words in a string. For example sentence, {{sentence | wordcount}}</h5>
+
+      <!-- truncatewords -->
+      <h5>Truncatewords: This filter is used to truncate a string after a given number of words. For example sentence, {{sentence | truncatewords:"2"}}</h5>
+
+      <!-- striptags -->
+      <h5>Striptags: This filter is used to remove HTML tags from a string. For example sentence, {{sentence | striptags}}</h5>
+
+      <!-- pluralize -->
+      <h5>Pluralize: This filter is used to pluralize a string. It is good for making backend notification. For example sentence, you have {{new_msg}} new message{{new_msg | pluralize:"s"}}</h5>
+
+      <!-- make_list -->
+      <h5>Make_list: This filter is used to convert a string to a list. For example earthly, {{"earthly" | make_list}}</h5>
+      
 </body>
 </html>

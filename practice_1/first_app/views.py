@@ -2,10 +2,7 @@ from django.shortcuts import render
 import datetime
 
 # Create your views here.
-
-
-def geeksfor(request):
-      context_dict = {'name': 'Rahim',
+context_dict = {'name': 'Rahim',
                       'age': 20,
                       'numbers': [1, 2, 3, 4, 5],
                       'list': ['I', 'am', 'learning', 'django'],
@@ -17,11 +14,11 @@ def geeksfor(request):
                       'sentence': 'Programming is fun',
                       'date': datetime.datetime.now(),
                       'empty': "",
-                      
-                  }
-      
-      
+                      "new_msg": 2,
+            }
+
+def geeksfor(request):
       return render(request, 'geeksfor.html', context=context_dict)
 
 def earthly(request):
-      return render(request, 'earthly.html')
+      return render(request, 'earthly.html', context=context_dict)
