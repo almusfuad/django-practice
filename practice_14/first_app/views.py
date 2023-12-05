@@ -1,7 +1,12 @@
 from django.shortcuts import render
-from first_app.forms import UserForm
+from first_app.forms import ExampleForm
 
 # Create your views here.
 def home(request):
-      form = UserForm()
+      if request.method == 'POST':
+            form = ExampleForm(request.POST)
+            if form.is_valid():
+                  print(form.cleaned_data)
+      else:
+            form = ExampleForm()           
       return render(request, 'home.html', {'form': form})
