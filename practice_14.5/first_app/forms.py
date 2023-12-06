@@ -10,7 +10,7 @@ FAVORITE_COLORS_CHOICES = [
       ('red', 'Red'),
 ]
 
-class ExampleForm(forms.Form):
+class OrdinaryCodersForm(forms.Form):
       # class Meta:
       #       model = User
       #       fields = '__all__'
