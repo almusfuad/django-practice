@@ -1,6 +1,6 @@
 from django.urls import path
-from second.views import home
+from second_app.views import blog2
 
 urlpatterns = [
-      path('', home, name = 'home'),
+      path('', blog2, name = 'blog2'),
 ]
