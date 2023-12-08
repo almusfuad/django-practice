@@ -22,7 +22,7 @@
                     <a class="nav-link" href="{% url 'add_musician' %}">Add Musician</a>
                   </li>
                   <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="{% url 'add_album' %}">Add Album</a>
                       </li>
                 </ul>
                 <form class="d-flex" role="search">
@@ -33,7 +33,7 @@
             </div>
           </nav>
 
-          <div style = "width: 96%; margin: auto;">
+          <div style ="padding-left: 2%; padding-right: 2%;">
             {% block content %} {% endblock %}
           </div>
 

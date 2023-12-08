@@ -2,26 +2,33 @@
 
 
 {% block content %}
-<table class="table">
-      <thead>
-        <tr>
+<table class="table table-hover">
+      <thead class="bg-secondary">
+        <tr >
           <th scope="col">ID</th>
           <th scope="col">Musician Name</th>
           <th scope="col">Email</th>
-          <!-- <th scope="col">Album Rating</th> -->
+          <th scope="col">Album Rating</th>
           <th scope="col">Instrument Type</th>
-          <!-- <th scope="col">Album Name</th>
+          <th scope="col">Album Name</th>
           <th scope="col">Release Date</th>
-          <th scope="col">Actions</th> -->
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-            {% for data in datas %}
+            {% for album in albums %}
         <tr>
-          <th scope="row">{{data.id}}</th>
-          <td>{{data.first_name}} {{data.last_name}}</td>
-          <td>{{data.email}}</td>
-          <td>{{data.instrument_type}}</td>
+          <th scope="row">{{album.id}}</th>
+          <td>{{album.musician.first_name}} {{album.musician.last_name}}</td>
+          <td>{{album.musician.email}}</td>
+          <td>{{album.rating}}</td>
+          <td>{{album.musician.instrument_type}}</td>
+          <td>{{album.album_name}}</td>
+          <td>{{album.album_release_date|date:"d-M-Y"}}</td>
+          <td>
+            <input type="submit" value="Edit">
+            <input type="submit" value="Delete">
+          </td>
         </tr>
             {% endfor %}
       </tbody>
