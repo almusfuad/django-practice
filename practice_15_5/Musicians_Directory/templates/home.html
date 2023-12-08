@@ -26,8 +26,12 @@
           <td>{{album.album_name}}</td>
           <td>{{album.album_release_date|date:"d-M-Y"}}</td>
           <td>
-            <input type="submit" value="Edit">
-            <input type="submit" value="Delete">
+            <a href="{% url 'edit_album' album.id %}">
+              <input type="submit" value="Edit" >
+            </a>
+            <a href="{% url 'delete_album' album.id %}">
+              <input type="submit" value="Delete">
+            </a>
           </td>
         </tr>
             {% endfor %}
