@@ -6,13 +6,12 @@
 {% if messages %}
 {% for m in messages %}
       <p {% if m.tags %} class="bg-{{m.tags}} text-white p-3" {% endif %}>{{m}}</p>
-
 {% endfor %}
 {% endif %}
 
 
 <form method="POST" style="width: 60%; margin: auto;">
-      <h2>Signup Page</h2><br>
+      <h2>Login Page</h2><br>
       {% csrf_token %}
       <!-- {{form | crispy}} -->
       {% for fm in form %}
@@ -22,7 +21,7 @@
       <br>
       {% endif %}
       {% endfor %}
-      <button class="btn btn-primary mt-4 mb-2" type="submit">Sign Up</button><br>
-      <small>Already have an account? </small> <a href="{% url 'login' %}">Login</a>
+      <button class="btn btn-primary mt-4 mb-2" type="submit">Login</button><br>
+      <small>Don't have any account? </small> <a href="{% url 'signup' %}">Sign Up</a>
 </form>
 {% endblock %}
