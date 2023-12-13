@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<form method="POST" style="width: 60%; margin: auto;">
+      <h2>Update Password Page</h2><br>
+      {% csrf_token %}
+      <!-- {{form | crispy}} -->
+      {% for fm in form %}
+      {{fm.label_tag}} {{fm}} 
+      {% if fm.errors %}
+      {{fm.errors | striptags}}
+      <br>
+      {% endif %}
+      {% endfor %}
+      <button class="btn btn-primary mt-4 mb-2" type="submit">{{type}}</button><br>
+</form>
+{% endblock %}

@@ -5,7 +5,7 @@
       <p {% if m.tags %} class="bg-{{m.tags}} text-white p-3 my-2" {% endif %}>{{m}}</p>
 {% endfor %}
 {% endif %}
-<div class="d-flex flex-column justify-content-start align-items-center " style="height: 100vh;">
+<div class="d-flex flex-column justify-content-start align-items-center " >
       {% for info in infos %}
       <div class="p-3">
             <h2>Welcome to <small class="text-success">{{info.username}}</small> profile</h2>
@@ -17,8 +17,8 @@
       {% endfor %}
       <div>
             <h3>Do Further operations:</h3>
-            <a href="#">Update Password</a><br>
-            <a href="#">Set Password</a>
+            <a href="{% url 'update_password' %}">Update Password</a><br>
+            <a href="{% url 'set_password' %}">Set Password</a>
       </div>
 </div>
 {% endblock %}

@@ -2,10 +2,21 @@
 {% block body %}
 {% if messages %}
 {% for m in messages %}
-      <p class="bg-danger text-white p-3">{{m}}</p>
+<p class="bg-danger text-white p-3">{{m}}</p>
 {% endfor %}
 {% endif %}
-<div class="d-flex justify-content-center p-3">
-      <h1>A simple application for user Authentication and Authorization</h1>
+<div class="d-flex flex-column justify-content-start align-items-center p-3">
+      <h1 class="my-3">A simple application for user Authentication and Authorization</h1>
+      <div>
+            <h3 class="my-3">This application has following operations:</h3>
+            <h5 class="text-info">Operation 1: <small class="text-dark">User can <a href="{% url 'signup' %}"
+                              class="text-decoration-none">sign up</a> a new account.</small></h5>
+            <h5 class="text-info">Operation 2: <small class="text-dark">User can <a href="{% url 'signup' %}"
+                              class="text-decoration-none">login</a> to existing account.</small></h5>
+            <h5 class="text-info">Operation 3: <small class="text-dark">Logged in user can logout from the
+                        account.</small></h5>
+            <h5 class="text-info">Operation 4: <small class="text-dark">Logged in user can update and set password
+                        differently.</small></h5>
+      </div>
 </div>
 {% endblock %}
