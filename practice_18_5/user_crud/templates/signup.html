@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+{% if messages %}
+{% for m in messages %}
+      <p {% if m.tags %} class="bg-{{m.tags}} text-white p-3" {% endif %}>{{m}}</p>
+
+{% endfor %}
+{% endif %}
+
+
+<form method="post" style="width: 60%; margin: auto;">
+      <h2>Signup Page</h2><br>
+      {% csrf_token %}
+      <!-- {{form | crispy}} -->
+      {% for fm in form %}
+      {{fm.label_tag}} {{fm}} 
+      {% if fm.errors %}
+      {{fm.errors | striptags}}
+      <br>
+      {% endif %}
+      {% endfor %}
+      <button class="btn btn-primary mt-4 mb-2" type="submit">Sign Up</button><br>
+      <small>Already have an account</small> <a href="#">Login</a>
+</form>
+{% endblock %}
