@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from . import forms
+from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 
 # Create your views here.
 def home(request):
@@ -15,7 +16,7 @@ def signup(request):
             if signup_form.is_valid():
                   signup_form.save()
                   messages.success(request, 'Account created successfully.')
-                  messages.error(request, 'Error creating account.')         
+                  messages.info(request, 'Error creating account.')         
       else:
             signup_form = forms.SignUpForm()
       return render(request, 'signup.html', {'form': signup_form})
@@ -31,8 +32,26 @@ def user_login(request):
                   if user is not None:
                         login(request, user)
                         messages.success(request, 'Logged in successfully.')
+                        return redirect('profile')
                   else:
-                        messages.error(request, 'Error logging in account.')
+                        messages.info(request, 'Error logging in account.')
       else:
             login_form = AuthenticationForm()
       return render(request, 'login.html', {'form': login_form})
+
+
+def profile(request):
+      if request.user.is_authenticated:
+            infos = User.objects.filter(username = request.user)
+            return render(request, 'profile.html', {'infos': infos})
+      else:
+            return redirect('login')
+      
+
+def user_logout(request):
+      if request.user.is_authenticated:
+            logout(request)
+            messages.success(request, 'Logged out successfully.')
+            return redirect('home')
+      
+

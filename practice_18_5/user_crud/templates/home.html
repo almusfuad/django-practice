@@ -1,4 +1,11 @@
 {% extends 'base.html' %}
 {% block body %}
-<h1>This is home page</h1>
+{% if messages %}
+{% for m in messages %}
+      <p class="bg-danger text-white p-3">{{m}}</p>
+{% endfor %}
+{% endif %}
+<div class="d-flex justify-content-center p-3">
+      <h1>A simple application for user Authentication and Authorization</h1>
+</div>
 {% endblock %}

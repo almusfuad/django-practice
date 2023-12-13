@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body %}
+{% if messages %}
+{% for m in messages %}
+      <p {% if m.tags %} class="bg-{{m.tags}} text-white p-3 my-2" {% endif %}>{{m}}</p>
+{% endfor %}
+{% endif %}
+<div class="d-flex flex-column justify-content-start align-items-center " style="height: 100vh;">
+      {% for info in infos %}
+      <div class="p-3">
+            <h2>Welcome to <small class="text-success">{{info.username}}</small> profile</h2>
+      </div>
+      <div class="mb-3">
+            <h5>Full Name: {{info.first_name}} {{info.last_name}}</h5>
+            <h5>Email: {{info.email}}</h5>
+      </div>
+      {% endfor %}
+      <div>
+            <h3>Do Further operations:</h3>
+            <a href="#">Update Password</a><br>
+            <a href="#">Set Password</a>
+      </div>
+</div>
+{% endblock %}
