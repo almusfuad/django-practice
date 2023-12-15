@@ -1,26 +1,32 @@
 from django.shortcuts import render, redirect
 from . import forms
-from django.views import View
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.urls import reverse_lazy
 from django.contrib import messages
+from album.models import Album
+from django.views.generic import ListView, CreateView
 
 # Create your views here.
-class UserRegisterView(View):
+class HomeDetails(ListView):
+      model = Album
+      template_name = 'home.html'
+      context_object_name = 'albums'
+
+class UserRegisterView(CreateView):
       template_name = 'authentication.html'
-      form_class = forms.RegisterForm
+      form_class = UserCreationForm
+      success_url = reverse_lazy('login')
       
-      def get(self, request, *args, **kwargs):
-            register_form = self.form_class()
-            return render(request, self.template_name, {'form': register_form, 'type': 'Register'})
+      def form_valid(self, form):
+            response = super().form_valid(form)
+            messages.success(self.request, 'Registered successfully.')
+            return response
       
-      def post(self, request, *args, **kwargs):
-            register_form = self.form_class(request.POST)
-            if register_form.is_valid():
-                  register_form.save()
-                  return redirect('login')
-            return render(request, self.template_name, {'form': register_form, 'type': 'Register'})
+      def get_context_data(self, **kwargs):
+            context = super().get_context_data(**kwargs)
+            context['type'] = 'Register'
+            return context
       
       
 class UserLoginView(LoginView):
@@ -28,11 +34,12 @@ class UserLoginView(LoginView):
       form_class = AuthenticationForm
       
       def get_success_url(self):
-            return reverse_lazy('login')
+            return reverse_lazy('home')
       
       def form_valid(self, form):
+            response = super().form_valid(form)
             messages.success(self.request, 'Logged in successfully.')
-            return super().form_valid(form)
+            return response
       
       def form_invalid(self, form):
             messages.error(self.request, 'Logged in Failed.')
@@ -42,3 +49,7 @@ class UserLoginView(LoginView):
             context = super().get_context_data(**kwargs)
             context['type'] = 'Login'
             return context
+      
+class UserLogoutView(LogoutView):
+      def get_success_url(self):
+            return reverse_lazy('home')

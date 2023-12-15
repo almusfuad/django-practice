@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Delete Album</h1>
+  <p>Are you sure you want to delete the album "{{ object }}"?</p>
+
+  <form method="post" action="{% url 'delete_album' pk=object.pk %}">
+    {% csrf_token %}
+    <a class="btn text-bg-danger" type="submit">Confirm Delete</a>
+  </form>
+
+  <a class="btn text-bg-success" href="{% url 'home' %}">Cancel</a>
+{% endblock %}
