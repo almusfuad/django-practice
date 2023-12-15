@@ -13,15 +13,3 @@ class AddMusicianView(CreateView):
       def form_valid(self, form):
             response = super().form_valid(form)
             return response
-      
-      # def get(self, request, *args, **kwargs):
-      #       musician_form = self.form_class()
-      #       return render(request, self.template_name, {'form': musician_form})
-      
-      
-      # def post(self, request, *args, **kwargs):
-      #       musician_form = self.form_class(request.POST)
-      #       if musician_form.is_valid():
-      #             musician_form.save(commit = False)
-      #             return redirect('add_musician')
-      #       return render(request, self.template_name, {'form': musician_form})
