@@ -14,6 +14,6 @@ class UserSignUpView(View):
       def post(self, request, *args, **kwargs):
             sign_form = self.form_class(request.POST)
             if sign_form.is_valid():
-                  form.save(commit = False)
-                  return redirect('login')
+                  sign_form.save()
+                  return redirect('signup')
             return render(request, self.template_name, {'form': sign_form})
