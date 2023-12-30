@@ -33,7 +33,6 @@ class DepositForm(TransactionForm):
                   )
             return amount
 
-
 class WithdrawFrom(TransactionForm):
       def clean_amount(self):
             account = self.account
@@ -59,7 +58,6 @@ class WithdrawFrom(TransactionForm):
             
             return amount
       
-
 class LoanRequestForm(TransactionForm):
       def clean_amount(self):
             amount = self.cleaned_data.get('amount')

@@ -91,15 +91,21 @@ class WithdrawMoneyView(TransactionCreateMixin):
       def form_valid(self, form):
             amount = form.cleaned_data.get('amount')
             account = self.request.user.account
-            account.balance -= amount          # Subtract request balance to old balance
-            account.save(
-                  update_fields = ['balance']
-            )
-            messages.success(self.request, f'Amount {amount} was withdrawal from your account successfully.')
             
-            send_transactions_email(self.request.user, amount, 'Withdrawal Balance', 'transactions/withdrawal_email.html')
+            try: 
+                  # attempting to withdraw money
+                  account.balance -= amount          # Subtract request balance to old balance
+                  account.save(
+                        update_fields = ['balance']
+                  )
+                  messages.success(self.request, f'Amount {amount} was withdrawal from your account successfully.')
+                  
+                  send_transactions_email(self.request.user, amount, 'Withdrawal Balance', 'transactions/withdrawal_email.html')
             
-            return super().form_valid(form)           # It inherit the class and make override
+                  return super().form_valid(form)           # It inherit the class and make override
+            except Exception:
+                  messages.error(self.request, f'The bank is bankrupt.')
+                  return self.form_invalid(form)
       
      
 class LoanRequestView(TransactionCreateMixin):
