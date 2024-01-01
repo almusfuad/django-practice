@@ -231,7 +231,6 @@ class TransferMoneyView(TransactionCreateMixin):
             
             # send email to the recipient
             receiver = recipient_account.user
-            print(receiver.email)
             send_transactions_email(receiver, amount, 'Receive Money', 'transactions/receive_money_email.html')
             
             return super().form_valid(form)
